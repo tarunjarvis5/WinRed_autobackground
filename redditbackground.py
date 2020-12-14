@@ -17,8 +17,11 @@ def getTopImageFromSubreddit(subredditName):
 	return topPost
 
 def getTopImagePostsFromSubreddit(subredditName):
+
 	subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/top.json"
-	
+	subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/hot.json"
+	subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/new.json"
+
 	while True:
 		try:
 			postsAsJsonRawText = urllib.request.urlopen(subredditPostsUrl).read()
