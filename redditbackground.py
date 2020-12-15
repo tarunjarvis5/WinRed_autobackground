@@ -5,22 +5,24 @@ import ctypes
 import time
 import os
 
-def setBackgroundFromSubreddit(subredditName):
-	topImagePost = getTopImageFromSubreddit(subredditName)
+def setBackgroundFromSubreddit(subredditName,page):
+	topImagePost = getTopImageFromSubreddit(subredditName,page)
 	imageFilename = storeImageInStoredBackgroundsFolder(topImagePost)
 	setImageAsBackground(imageFilename)
 	return topImagePost
 
-def getTopImageFromSubreddit(subredditName):
-	topImagePosts = getTopImagePostsFromSubreddit(subredditName)
+def getTopImageFromSubreddit(subredditName,page):
+	topImagePosts = getTopImagePostsFromSubreddit(subredditName,page)
 	topPost = topImagePosts[0]["data"]
 	return topPost
 
-def getTopImagePostsFromSubreddit(subredditName):
-
-	subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/top.json"
-	subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/hot.json"
-	subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/new.json"
+def getTopImagePostsFromSubreddit(subredditName,page):
+	if page == 'top' :
+		subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/top.json"
+	elif page == 'hot' :
+		subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/hot.json"
+	elif page == 'new' :
+		subredditPostsUrl = "https://www.reddit.com/r/" + subredditName + "/new.json"
 
 	while True:
 		try:
@@ -35,7 +37,7 @@ def getTopImagePostsFromSubreddit(subredditName):
 
 def storeImageInStoredBackgroundsFolder(image):
 	createStoredBackgroundsFolderIfNotExists()
-	imageFilename = "bg_" + image["Title"] + ".jpg"
+	imageFilename = "bg_" + image["title"] + ".jpg"
 	open("stored_backgrounds/" + imageFilename, "wb").write(urllib.request.urlopen(image["url"]).read())
 	return imageFilename
 
