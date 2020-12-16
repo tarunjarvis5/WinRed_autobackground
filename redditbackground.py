@@ -5,10 +5,13 @@ import ctypes
 import time
 import os
 
-def setBackgroundFromSubreddit(subredditName,page):
+def setBackgroundFromSubreddit(subredditName,page,save):
 	topImagePost = getTopImageFromSubreddit(subredditName,page)
 	imageFilename = storeImageInStoredBackgroundsFolder(topImagePost)
 	setImageAsBackground(imageFilename)
+	if save == "n" :
+		time.sleep(3)
+		DeleteImage(imageFilename)
 	return topImagePost
 
 def getTopImageFromSubreddit(subredditName,page):
@@ -50,3 +53,12 @@ def setImageAsBackground(imageFilename):
 
 def getFullPathOfImage(imageFilename):
 	return os.path.dirname(os.path.realpath("stored_backgrounds/" + imageFilename)) + "\\" + imageFilename
+
+def DeleteImage(imageFilename):
+
+	if os.path.exists(getFullPathOfImage(imageFilename)) :
+		os.remove(getFullPathOfImage(imageFilename))
+	else :
+		print("Image does not exist")
+
+
