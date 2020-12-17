@@ -1,4 +1,6 @@
-# How to run WinRed_autobackground on your Windows computer:  ##*(inspired by https://github.com/SavvasStephanides)
+# How to run WinRed_autobackground on your Windows computer:  
+(inspired by https://github.com/SavvasStephanides)
+
 You will need:
 
 * Python 3
