@@ -1,4 +1,4 @@
-# How to run Reddit Background on your Windows computer:
+# How to run WinRed_autobackground on your Windows computer:
 
 You will need:
 
@@ -7,21 +7,12 @@ You will need:
 
 ## 1. Clone RedditBackground
 
-    git clone https://github.com/SavvStudio/RedditBackground.git
-
+    git clone https://github.com/tarunjarvis5/WinRed_autobackground.git
 
 ## 2. Run RedditBackground
 
-    cd RedditBackground
-    python run.py subreddit_name
+    cd RedditBackground         (go to the program directory)
+    python run.py
 
 Example:
 
-    python run.py wallpapers
-    
-The top image of your selected subreddit with a note on image details:
-
-    Setting your background as the top image of /r/wallpapers...
-    Done!
-    ===== Image Details =====
-    Title: Ponyo and Sosuke
